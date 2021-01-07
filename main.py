@@ -11,6 +11,14 @@ def add_to_playlist(token,username):
         print('add_to_playlist Success')
     else:
         print("Can't get token for", username)
+def me_test(token,username):
+    if token:
+        sp = spotipy.Spotify(auth=token)
+        sp.trace = False
+        print(sp.me())
+        print('me success')
+    else:
+        print("Can't get token for", username)
 
 def main():
     config = configparser.ConfigParser()
@@ -43,4 +51,5 @@ def main():
 
     add_to_playlist(token,username)
     print('main Success')
+    me_test(token,username)
 main()
